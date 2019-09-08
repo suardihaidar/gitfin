@@ -1,29 +1,28 @@
 # gitfin
+A personal project built with Vue and other tools to search users and view their repos on Github.
 
-## Project setup
-```
-yarn install
-```
+## Libraries and tools
+- Vue
+- Bootstrap-vue
+- Axios
 
-### Compiles and hot-reloads for development
+## Getting Started
+The stack is built using vue-cli webpack, so to get started all you have to do is:
 ```
-yarn run serve
-```
+# install dependencies
+$ yarn install
 
-### Compiles and minifies for production
+# Compiles and hot-reloads for development at localhost:8080
+$ yarn run serve
 ```
-yarn run build
+Other commands available are:
 ```
+# build for production 
+$ yarn run build
 
-### Run your tests
-```
+# run unit tests
 yarn run test
 ```
 
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### License
+MIT
