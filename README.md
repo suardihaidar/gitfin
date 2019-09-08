@@ -1,4 +1,4 @@
-# gitfin
+# GitFin
 A personal project built with Vue and other tools to search users and view their repos on Github.
 
 ## Libraries and tools
@@ -8,7 +8,7 @@ A personal project built with Vue and other tools to search users and view their
 
 ## Getting Started
 The stack is built using vue-cli webpack, so to get started all you have to do is:
-```
+```sh
 # install dependencies
 $ yarn install
 
@@ -16,7 +16,7 @@ $ yarn install
 $ yarn run serve
 ```
 Other commands available are:
-```
+```sh
 # build for production 
 $ yarn run build
 
