@@ -21,28 +21,6 @@ export default {
     Header,
     SearchBox
   },
-  data() {
-    return {
-      userData: [],
-      username: "tes"
-    };
-  },
-  methods: {
-    search() {
-      
-    }
-  },
-  mounted: function() {
-    fetch(`https://api.github.com/users/${username}/repos`, {
-      method: "get"
-    })
-      .then(response => {
-        return response.json();
-      })
-      .then(jsonData => {
-        this.userData = jsonData;
-      });
-  }
 };
 </script>
 

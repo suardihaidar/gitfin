@@ -5,23 +5,41 @@
         <label for="input-default">Search GitHub User</label>
         <b-col sm="10">
           <b-form-input
-            @keyup.enter="search"
+            v-on:keyup.enter="fetchItems"
             id="input-default"
             placeholder="Search user e.g. suardihaidar"
-          >{{username}}</b-form-input>
+            v-model="username"
+          ></b-form-input>
         </b-col>
+        <b-button v-on:click="fetchItems">Search</b-button>
       </b-row>
     </b-container>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
-  props: {
-    username: String
+  data() {
+    return {
+      userData: [],
+      username: ""
+    };
   },
-  mounted() {
-    console.log(this.username);
+
+  created: function() {
+    this.fetchItems();
+  },
+
+  methods: {
+    fetchItems() {
+      let uri = `https://api.github.com/users/${this.username}/repos`;
+      axios.get(uri).then(response => {
+        this.userData = response.data;
+        // eslint-disable-next-line
+        console.log(this.userData);
+      });
+    }
   }
 };
 </script>
