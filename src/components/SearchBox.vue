@@ -5,14 +5,24 @@
         <label for="input-default">Search GitHub User</label>
         <b-col sm="10">
           <b-form-input
-            v-on:keyup.enter="fetchItems"
+            v-on:keyup.enter="fetchRepos"
             id="input-default"
             placeholder="Search user e.g. suardihaidar"
             v-model="username"
           ></b-form-input>
         </b-col>
-        <b-button v-on:click="fetchItems">Search</b-button>
+        <b-button v-on:click="fetchRepos">Search</b-button>
       </b-row>
+    </b-container>
+
+    <b-container>
+      <b-list-group-item v-for="data in userData" v-bind:key="data.full_name">
+        <b-button block variant="light">
+          <a
+            :href="`https://github.com/${username}/${data.name}/blob/master/README.md`" target="_blank"
+          >{{ data.full_name }}</a>
+        </b-button>
+      </b-list-group-item>
     </b-container>
   </div>
 </template>
@@ -24,17 +34,17 @@ export default {
   data() {
     return {
       userData: [],
-      username: ""
+      username: "",
+      isActive: false
     };
   },
 
   methods: {
-    fetchItems() {
+    fetchRepos() {
       axios
         .get(`https://api.github.com/users/${this.username}/repos`)
         .then(response => {
           this.userData = response.data;
-          this.username = "";
           console.log(this.userData);
         })
         .catch(err => {
