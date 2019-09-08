@@ -18,6 +18,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 import axios from "axios";
 export default {
   data() {
@@ -27,18 +28,19 @@ export default {
     };
   },
 
-  created: function() {
-    this.fetchItems();
-  },
-
   methods: {
     fetchItems() {
-      let uri = `https://api.github.com/users/${this.username}/repos`;
-      axios.get(uri).then(response => {
-        this.userData = response.data;
-        // eslint-disable-next-line
-        console.log(this.userData);
-      });
+      axios
+        .get(`https://api.github.com/users/${this.username}/repos`)
+        .then(response => {
+          this.userData = response.data;
+          this.username = "";
+          console.log(this.userData);
+        })
+        .catch(err => {
+          this.username = "";
+          console.log(err);
+        });
     }
   }
 };
